@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wheels/src/utils/constants.dart';
 
 AppBar buildAppBar(BuildContext context) {
@@ -18,10 +19,14 @@ AppBar buildAppBar(BuildContext context) {
     ),
     centerTitle: true,
     actions: [
-      // IconButton(
-      //   icon: ClipOval(child: Image.asset("assets/images/profile.png")),
-      //   onPressed: () {},
-      // )
+      IconButton(
+        icon: SvgPicture.asset(
+          "assets/icons/bag.svg",
+          color: kWhiteColor,
+          width: 24.0,
+        ),
+        onPressed: () {},
+      )
     ],
   );
 }
