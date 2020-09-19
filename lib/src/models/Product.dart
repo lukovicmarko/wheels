@@ -2,7 +2,7 @@ class Product {
   final String id;
   final String name;
   final double price;
-  final List<String> images;
+  final List images;
   final String dimensions;
   final String description;
 

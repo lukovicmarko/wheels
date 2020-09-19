@@ -23,7 +23,7 @@ class ProductsData extends ChangeNotifier {
           id: product['id'],
           name: product['name'],
           price: product['price'].toDouble(),
-          images: product['images'],
+          images: product['image'],
           description: product['description'],
         ),
       );

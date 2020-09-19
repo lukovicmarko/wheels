@@ -7,9 +7,9 @@ AppBar buildAppBar(BuildContext context) {
     backgroundColor: Colors.transparent,
     elevation: 0,
     leading: IconButton(
-      icon: Icon(
-        Icons.menu,
-        color: kWhiteColor,
+      icon: SvgPicture.asset(
+        "assets/icons/menu.svg",
+        width: 27.0,
       ),
       onPressed: () {},
     ),
@@ -20,10 +20,12 @@ AppBar buildAppBar(BuildContext context) {
     centerTitle: true,
     actions: [
       IconButton(
-        icon: SvgPicture.asset(
-          "assets/icons/bag.svg",
-          color: kWhiteColor,
-          width: 24.0,
+        iconSize: 35.0,
+        icon: ClipRRect(
+          borderRadius: BorderRadius.circular(5.0),
+          child: Image.asset(
+            "assets/images/profile.jpg",
+          ),
         ),
         onPressed: () {},
       )

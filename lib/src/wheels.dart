@@ -19,10 +19,14 @@ class Wheels extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Wheels',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: kPrimaryColor,
+        theme: ThemeData(
+          //brightness: Brightness.light,
+          fontFamily: 'Nunito',
+          textTheme: TextTheme(
+            bodyText2: TextStyle(fontSize: 16.0),
+          ),
         ),
         home: MainScreen(),
       ),
