@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wheels/src/pages/home/widgets/categories.dart';
 import 'package:wheels/src/pages/home/widgets/filter.dart';
 import 'package:wheels/src/pages/home/widgets/header.dart';
 import 'package:wheels/src/pages/home/widgets/products_view.dart';
-import 'package:wheels/src/pages/home/widgets/search.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -11,6 +11,7 @@ class Home extends StatelessWidget {
     return Column(
       children: [
         Header(size: size),
+        Categories(),
         ProductsView(),
       ],
     );

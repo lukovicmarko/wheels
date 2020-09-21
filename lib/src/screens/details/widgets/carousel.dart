@@ -41,7 +41,7 @@ class _CarouselState extends State<Carousel> {
                             item,
                             fit: BoxFit.cover,
                             height: 220.0,
-                            width: size.width * 0.8,
+                            width: size.width * 0.9,
                           ),
                         ),
                       ))

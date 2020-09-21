@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:wheels/src/pages/home/home.dart';
-import 'package:wheels/src/pages/notifications.dart';
-import 'package:wheels/src/pages/profile.dart';
+import 'package:wheels/src/pages/favorites/favorites.dart';
+import 'package:wheels/src/pages/profile/profile.dart';
 
 class BottomNavigation extends ChangeNotifier {
   final currentTab = [
-    Notifications(),
     Home(),
+    Favorites(),
     Profile(),
   ];
 
-  int _currentIndex = 1;
+  int _currentIndex = 0;
 
   get currentIndex => _currentIndex;
 

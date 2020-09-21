@@ -15,7 +15,7 @@ class ProductsView extends StatelessWidget {
               shrinkWrap: true,
               crossAxisCount: 2,
               crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+              mainAxisSpacing: 20,
               childAspectRatio: 2 / 2.5,
               children: List.generate(productsData.products.length, (index) {
                 return ProductCard(product: productsData.products[index]);

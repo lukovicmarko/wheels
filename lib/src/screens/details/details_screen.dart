@@ -14,6 +14,7 @@ class DetailsScreen extends StatelessWidget {
         context,
         "assets/icons/left-arrow.svg",
         () => Navigator.of(context).pop(),
+        Container(),
       ),
       body: ListView(
         children: [

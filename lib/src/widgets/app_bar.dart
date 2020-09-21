@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wheels/src/utils/constants.dart';
 
-AppBar buildAppBar(BuildContext context, icon, onPress) {
+AppBar buildAppBar(BuildContext context, icon, onPress, actionIcon) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -23,17 +23,6 @@ AppBar buildAppBar(BuildContext context, icon, onPress) {
       ),
     ),
     centerTitle: true,
-    actions: [
-      IconButton(
-        iconSize: 35.0,
-        icon: ClipRRect(
-          borderRadius: BorderRadius.circular(5.0),
-          child: Image.asset(
-            "assets/images/profile.jpg",
-          ),
-        ),
-        onPressed: () {},
-      )
-    ],
+    actions: [actionIcon],
   );
 }
