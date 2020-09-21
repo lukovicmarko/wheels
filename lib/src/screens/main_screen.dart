@@ -12,9 +12,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: provider.currentTab[provider.currentIndex],
-      bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(canvasColor: kPrimaryColor),
-          child: buildBottomNavigation(provider)),
+      bottomNavigationBar: buildBottomNavigation(provider),
     );
   }
 }

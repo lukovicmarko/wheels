@@ -10,13 +10,13 @@ class Filter extends StatelessWidget {
       width: 42.0,
       padding: EdgeInsets.all(2.0),
       decoration: BoxDecoration(
-        border: Border.all(color: kIconColor),
         borderRadius: BorderRadius.circular(8.0),
+        color: kYellowColor,
       ),
       child: IconButton(
         icon: SvgPicture.asset(
           "assets/icons/equalizer.svg",
-          color: Colors.white,
+          color: kWhiteColor,
         ),
         onPressed: () {},
       ),

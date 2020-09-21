@@ -10,12 +10,17 @@ AppBar buildAppBar(BuildContext context) {
       icon: SvgPicture.asset(
         "assets/icons/menu.svg",
         width: 27.0,
+        color: kWhiteColor,
       ),
       onPressed: () {},
     ),
     title: Text(
       "Wheels",
-      style: TextStyle(color: kWhiteColor),
+      style: TextStyle(
+        color: kWhiteColor,
+        fontWeight: FontWeight.bold,
+        fontSize: 28.0,
+      ),
     ),
     centerTitle: true,
     actions: [

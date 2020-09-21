@@ -22,10 +22,10 @@ class Wheels extends StatelessWidget {
         title: 'Wheels',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          //brightness: Brightness.light,
           fontFamily: 'Nunito',
+          scaffoldBackgroundColor: kBackgroundColor,
           textTheme: TextTheme(
-            bodyText2: TextStyle(fontSize: 16.0),
+            bodyText2: TextStyle(fontSize: 16.0, color: kWhiteColor),
           ),
         ),
         home: MainScreen(),

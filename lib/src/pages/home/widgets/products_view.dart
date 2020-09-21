@@ -8,16 +8,19 @@ class ProductsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ProductsData>(
       builder: (context, productsData, child) {
-        return Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.0),
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            children: List.generate(productsData.products.length, (index) {
-              return ProductCard(product: productsData.products[index]);
-            }),
+        return Expanded(
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
+            child: GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 2 / 2.5,
+              children: List.generate(productsData.products.length, (index) {
+                return ProductCard(product: productsData.products[index]);
+              }),
+            ),
           ),
         );
       },
