@@ -19,5 +19,6 @@ const kInactiveColor = Color(0xFF2B3038);
 const kIconColor = Color(0xFFA4A5A7);
 
 const kBackgroundColor = Color(0xFF102733);
+const kBottomNavigationColor = Color(0xFF152F3E);
 const kGradientStart = Color(0xFF5a607a);
 const kGradientEnd = Color(0xff4a4f66);

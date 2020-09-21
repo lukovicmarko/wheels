@@ -9,7 +9,11 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<BottomNavigation>(context);
     return Scaffold(
-      appBar: buildAppBar(context, "assets/icons/menu.svg", () {}),
+      appBar: buildAppBar(
+        context,
+        "assets/icons/menu.svg",
+        () {},
+      ),
       body: provider.currentTab[provider.currentIndex],
       bottomNavigationBar: buildBottomNavigation(provider),
     );

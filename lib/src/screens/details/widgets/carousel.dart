@@ -33,12 +33,16 @@ class _CarouselState extends State<Carousel> {
                     });
                   }),
               items: widget.product.images
-                  .map((item) => Container(
-                        child: Image.network(
-                          item,
-                          fit: BoxFit.cover,
-                          height: 220.0,
-                          width: size.width * 0.8,
+                  .map((item) => Hero(
+                        tag: widget.product.name,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                          child: Image.network(
+                            item,
+                            fit: BoxFit.cover,
+                            height: 220.0,
+                            width: size.width * 0.8,
+                          ),
                         ),
                       ))
                   .toList(),

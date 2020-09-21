@@ -17,7 +17,8 @@ class ProductCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => DetailsScreen(product: product)),
+                builder: (context) => DetailsScreen(product: product),
+              ),
             );
           },
           child: Container(
@@ -31,14 +32,17 @@ class ProductCard extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15.0),
-                        topRight: Radius.circular(15.0),
-                      ),
-                      child: Image.network(
-                        product.images[0],
-                        fit: BoxFit.cover,
+                    child: Hero(
+                      tag: product.name,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15.0),
+                          topRight: Radius.circular(15.0),
+                        ),
+                        child: Image.network(
+                          product.images[0],
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

@@ -7,15 +7,18 @@ class Search extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: 40.0,
+        height: 45.0,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: kPrimaryColor,
           borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(color: kBorderColor, width: 1.5),
         ),
         child: TextField(
           decoration: InputDecoration(
             border: InputBorder.none,
+            prefixIcon: Icon(
+              Icons.search,
+              color: kWhiteColor,
+            ),
           ),
           onChanged: (value) {},
         ),
