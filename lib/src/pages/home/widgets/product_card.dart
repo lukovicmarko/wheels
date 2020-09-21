@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wheels/src/models/Product.dart';
+import 'package:wheels/src/screens/details/details_screen.dart';
 import 'package:wheels/src/utils/constants.dart';
 
 class ProductCard extends StatelessWidget {
@@ -11,55 +12,63 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: kPrimaryColor,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 3,
-                child: Container(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.0),
-                      topRight: Radius.circular(15.0),
-                    ),
-                    child: Image.network(
-                      product.images[0],
-                      fit: BoxFit.cover,
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DetailsScreen()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.0),
+              color: kPrimaryColor,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.0),
+                        topRight: Radius.circular(15.0),
+                      ),
+                      child: Image.network(
+                        product.images[0],
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                    padding: EdgeInsets.only(left: 8.0, top: 8.0, right: 8.0),
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            product.name,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
+                Expanded(
+                  child: Padding(
+                      padding: EdgeInsets.only(left: 8.0, top: 8.0, right: 8.0),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              product.name,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                              ),
                             ),
                           ),
-                        ),
-                        Text(
-                          "${product.price.toString()} €",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 19.0,
-                          ),
-                        )
-                      ],
-                    )),
-              ),
-            ],
+                          Text(
+                            "${product.price.toString()} €",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 19.0,
+                            ),
+                          )
+                        ],
+                      )),
+                ),
+              ],
+            ),
           ),
         ),
         Positioned(

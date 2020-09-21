@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wheels/src/provider/bottom_navigation.dart';
 import 'package:wheels/src/utils/constants.dart';
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 
@@ -17,19 +16,19 @@ BubbleBottomBar buildBottomNavigation(provider) {
       BubbleBottomBarItem(
         backgroundColor: kSeconaryColor,
         icon: SvgPicture.asset(
-          "assets/icons/bag.svg",
+          "assets/icons/like.svg",
           width: 26.0,
           height: 26.0,
           color: kWhiteColor,
         ),
         activeIcon: SvgPicture.asset(
-          "assets/icons/bag.svg",
+          "assets/icons/like_fill.svg",
           width: 26.0,
           height: 26.0,
           color: kYellowColor,
         ),
         title: Text(
-          "Notification",
+          "Favorites",
           style: TextStyle(
             color: kYellowColor,
           ),
