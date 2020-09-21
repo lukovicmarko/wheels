@@ -3,10 +3,17 @@ import 'package:wheels/src/models/Product.dart';
 import 'package:wheels/src/screens/details/details_screen.dart';
 import 'package:wheels/src/utils/constants.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   ProductCard({this.product});
 
   final Product product;
+
+  @override
+  _ProductCardState createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool isActive = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,7 @@ class ProductCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailsScreen(product: product),
+                builder: (context) => DetailsScreen(product: widget.product),
               ),
             );
           },
@@ -33,14 +40,14 @@ class ProductCard extends StatelessWidget {
                   flex: 3,
                   child: Container(
                     child: Hero(
-                      tag: product.name,
+                      tag: widget.product.name,
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(15.0),
                           topRight: Radius.circular(15.0),
                         ),
                         child: Image.network(
-                          product.images[0],
+                          widget.product.images[0],
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -54,7 +61,7 @@ class ProductCard extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              product.name,
+                              widget.product.name,
                               maxLines: 1,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -63,7 +70,7 @@ class ProductCard extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "${product.price.toString()} €",
+                            "${widget.product.price.toString()} €",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 19.0,
@@ -80,7 +87,11 @@ class ProductCard extends StatelessWidget {
           top: 10.0,
           left: 10.0,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                isActive = !isActive;
+              });
+            },
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
@@ -88,11 +99,17 @@ class ProductCard extends StatelessWidget {
               ),
               child: Padding(
                 padding: EdgeInsets.all(3.0),
-                child: Icon(
-                  Icons.favorite_border,
-                  color: kBlackColor,
-                  size: 20.0,
-                ),
+                child: isActive
+                    ? Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                        size: 25.0,
+                      )
+                    : Icon(
+                        Icons.favorite_border,
+                        color: kBlackColor,
+                        size: 25.0,
+                      ),
               ),
             ),
           ),
