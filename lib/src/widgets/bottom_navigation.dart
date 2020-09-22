@@ -44,6 +44,21 @@ BottomNavigationBar buildBottomNavigation(BottomNavigation provider) {
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
+          "assets/icons/camera.svg",
+          width: 26.0,
+          height: 26.0,
+          color: kWhiteColor,
+        ),
+        title: Container(),
+        activeIcon: SvgPicture.asset(
+          "assets/icons/camera_fill.svg",
+          width: 26.0,
+          height: 26.0,
+          color: kYellowColor,
+        ),
+      ),
+      BottomNavigationBarItem(
+        icon: SvgPicture.asset(
           "assets/icons/user.svg",
           width: 26.0,
           height: 26.0,

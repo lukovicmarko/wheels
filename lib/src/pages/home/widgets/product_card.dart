@@ -37,7 +37,7 @@ class _ProductCardState extends State<ProductCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  flex: 3,
+                  flex: 2,
                   child: Container(
                     child: Hero(
                       tag: widget.product.name,
@@ -56,35 +56,51 @@ class _ProductCardState extends State<ProductCard> {
                 ),
                 Expanded(
                   child: Padding(
-                      padding: EdgeInsets.only(left: 8.0, top: 8.0, right: 8.0),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              widget.product.name,
-                              maxLines: 1,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "${widget.product.price.toString()} €",
+                    padding: EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 4.0),
+                          child: Text(
+                            widget.product.name,
+                            maxLines: 1,
+                            softWrap: true,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 19.0,
+                              fontSize: 18.0,
                             ),
-                          )
-                        ],
-                      )),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: kOrangeColor,
+                              size: 20.0,
+                            ),
+                            Text(
+                              "Kragujevac",
+                              maxLines: 1,
+                              softWrap: true,
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: kColorGreen,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
         ),
         Positioned(
-          top: 10.0,
+          top: 6.0,
           left: 10.0,
           child: GestureDetector(
             onTap: () {
@@ -110,6 +126,28 @@ class _ProductCardState extends State<ProductCard> {
                         color: kBlackColor,
                         size: 25.0,
                       ),
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 0.0,
+          right: 0.0,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(252, 205, 0, 0.6),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(15.0),
+                topRight: Radius.circular(15.0),
+              ),
+            ),
+            child: Text(
+              "${widget.product.price.toString()} €",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 19.0,
+                color: kWhiteColor,
               ),
             ),
           ),
