@@ -5,6 +5,7 @@ import 'package:wheels/src/utils/constants.dart';
 
 class Carousel extends StatefulWidget {
   Carousel({this.product});
+
   final Product product;
 
   @override
@@ -12,7 +13,8 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
-  int _current = 0;
+  int _selectedImage = 0;
+  final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class _CarouselState extends State<Carousel> {
         return Column(
           children: [
             CarouselSlider(
+              carouselController: _controller,
               options: CarouselOptions(
                   height: 220.0,
                   viewportFraction: 1.0,
@@ -29,7 +32,7 @@ class _CarouselState extends State<Carousel> {
                   autoPlay: false,
                   onPageChanged: (index, reason) {
                     setState(() {
-                      _current = index;
+                      _selectedImage = index;
                     });
                   }),
               items: widget.product.images
@@ -47,24 +50,46 @@ class _CarouselState extends State<Carousel> {
                       ))
                   .toList(),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: widget.product.images.map((url) {
-                int index = widget.product.images.indexOf(url);
-                return Container(
-                  width: 8.0,
-                  height: 8.0,
-                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _current == index ? kWhiteColor : kIconColor,
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ...Iterable<int>.generate(widget.product.images.length).map(
+                    (int pageIndex) => buildSmallPreview(pageIndex),
                   ),
-                );
-              }).toList(),
-            ),
+                ],
+              ),
+            )
           ],
         );
       },
+    );
+  }
+
+  GestureDetector buildSmallPreview(int index) {
+    return GestureDetector(
+      onTap: () {
+        _controller.animateToPage(index);
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 15.0),
+        height: 48.0,
+        width: 48.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(
+            color: _selectedImage == index ? kOrangeColor : Colors.transparent,
+          ),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10.0),
+          child: Image.network(
+            widget.product.images[index],
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
     );
   }
 }
