@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels/src/models/Product.dart';
+import 'package:wheels/src/screens/details/widgets/full_screen_carousel.dart';
 import 'package:wheels/src/utils/constants.dart';
 
 class Carousel extends StatefulWidget {
@@ -35,20 +36,34 @@ class _CarouselState extends State<Carousel> {
                       _selectedImage = index;
                     });
                   }),
-              items: widget.product.images
-                  .map((item) => Hero(
-                        tag: widget.product.name,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                          child: Image.network(
-                            item,
-                            fit: BoxFit.cover,
-                            height: 220.0,
-                            width: size.width * 0.9,
+              items: widget.product.images.map((item) {
+                int index = widget.product.images.indexOf(item);
+                return Hero(
+                  tag: widget.product.name,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullscreenCarousel(
+                            product: widget.product,
+                            index: index,
                           ),
                         ),
-                      ))
-                  .toList(),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      child: Image.network(
+                        item,
+                        fit: BoxFit.cover,
+                        height: 220.0,
+                        width: size.width * 0.9,
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0),

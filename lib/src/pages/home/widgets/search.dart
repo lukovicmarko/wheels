@@ -12,15 +12,30 @@ class Search extends StatelessWidget {
           color: kPrimaryColor,
           borderRadius: BorderRadius.circular(8.0),
         ),
-        child: TextField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              Icons.search,
-              color: kWhiteColor,
+        child: Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              child: SvgPicture.asset(
+                "assets/icons/loupe.svg",
+                color: kWhiteColor,
+                width: 22.0,
+              ),
             ),
-          ),
-          onChanged: (value) {},
+            Expanded(
+              child: TextField(
+                style: TextStyle(
+                  color: kWhiteColor,
+                  fontSize: 19.0,
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(bottom: 4.0),
+                ),
+                onChanged: (value) {},
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -18,7 +18,16 @@ class Filter extends StatelessWidget {
           "assets/icons/equalizer.svg",
           color: kWhiteColor,
         ),
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) => Container(
+              height: MediaQuery.of(context).size.height * 0.85,
+              color: kBackgroundColor,
+            ),
+          );
+        },
       ),
     );
   }
