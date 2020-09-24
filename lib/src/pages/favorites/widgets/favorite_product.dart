@@ -13,66 +13,68 @@ class FavoriteProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailsScreen(product: product),
-          ),
-        );
-      },
-      child: Container(
-        height: 150.0,
-        padding: EdgeInsets.only(left: 10.0),
-        margin: EdgeInsets.symmetric(vertical: 10.0),
-        child: Row(
-          children: [
-            Hero(
-              tag: product.name,
-              child: Container(
-                width: 160.0,
-                height: double.infinity,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                  child: Image.network(
-                    product.images[0],
-                    fit: BoxFit.cover,
-                  ),
+    return product.isFavorite
+        ? GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(product: product),
                 ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ProductTitle(
-                      product: product,
-                      fontSize: 20.0,
-                      maxLines: 2,
-                    ),
-                    Location(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ProductPrice(
-                          product: product,
-                          color: kYellowColor,
-                          fontSize: 22.0,
+              );
+            },
+            child: Container(
+              height: 150.0,
+              padding: EdgeInsets.only(left: 10.0),
+              margin: EdgeInsets.symmetric(vertical: 10.0),
+              child: Row(
+                children: [
+                  Hero(
+                    tag: product.name,
+                    child: Container(
+                      width: 160.0,
+                      height: double.infinity,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        child: Image.network(
+                          product.images[0],
+                          fit: BoxFit.cover,
                         ),
-                        FavoriteButton(product: product)
-                      ],
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ProductTitle(
+                            product: product,
+                            fontSize: 20.0,
+                            maxLines: 2,
+                          ),
+                          Location(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ProductPrice(
+                                product: product,
+                                color: kYellowColor,
+                                fontSize: 22.0,
+                              ),
+                              FavoriteButton(product: product)
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          )
+        : Container();
   }
 }

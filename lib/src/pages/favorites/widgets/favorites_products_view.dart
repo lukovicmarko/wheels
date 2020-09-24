@@ -9,9 +9,9 @@ class FavoritesProductsView extends StatelessWidget {
     return Consumer<ProductsData>(builder: (context, products, child) {
       return ListView.builder(
         shrinkWrap: true,
-        itemCount: products.favoritesProducts.length,
+        itemCount: products.products.length,
         itemBuilder: (BuildContext context, int index) {
-          return FavoriteProduct(product: products.favoritesProducts[index]);
+          return FavoriteProduct(product: products.products[index]);
         },
       );
     });

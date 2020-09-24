@@ -35,8 +35,6 @@ class ProductsData extends ChangeNotifier {
 
   UnmodifiableListView<Product> get products => UnmodifiableListView(_products);
 
-  List<Product> _favoritesProducts = [];
-
   Future updateProduct(Product product) async {
     RequestResult requestResult =
         RequestResult('http://192.168.0.19:5000/products/${product.id}');
@@ -49,25 +47,8 @@ class ProductsData extends ChangeNotifier {
     return productsResponse;
   }
 
-  UnmodifiableListView<Product> get favoritesProducts =>
-      UnmodifiableListView(_favoritesProducts);
-
-  _addToFavotites(product) {
-    _favoritesProducts.add(product);
-  }
-
-  _removeFromFavorites(product) {
-    _favoritesProducts.remove(product);
-  }
-
   void toggleFavorite(Product product) {
     updateProduct(product);
-
-    if (product.isFavorite) {
-      _addToFavotites(product);
-    } else {
-      _removeFromFavorites(product);
-    }
 
     notifyListeners();
   }
