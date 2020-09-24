@@ -28,4 +28,18 @@ class RequestResult {
   //     print(response.statusCode);
   //   }
   // }
+  Future updateData(body) async {
+    http.Response response = await http.put(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(body),
+    );
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      print(response.statusCode);
+    }
+  }
 }

@@ -20,7 +20,7 @@ class ProductsData extends ChangeNotifier {
     productsResponse['data'].forEach((product) {
       _products.add(
         Product(
-          id: product['id'],
+          id: product['_id'],
           name: product['name'],
           price: product['price'].toDouble(),
           images: product['image'],
@@ -37,6 +37,18 @@ class ProductsData extends ChangeNotifier {
 
   List<Product> _favoritesProducts = [];
 
+  Future updateProduct(Product product) async {
+    RequestResult requestResult =
+        RequestResult('http://192.168.0.19:5000/products/${product.id}');
+
+    product.isFavorite = !product.isFavorite;
+
+    final productsResponse =
+        await requestResult.updateData({"isFavorite": product.isFavorite});
+
+    return productsResponse;
+  }
+
   UnmodifiableListView<Product> get favoritesProducts =>
       UnmodifiableListView(_favoritesProducts);
 
@@ -49,7 +61,7 @@ class ProductsData extends ChangeNotifier {
   }
 
   void toggleFavorite(Product product) {
-    product.isFavorite = !product.isFavorite;
+    updateProduct(product);
 
     if (product.isFavorite) {
       _addToFavotites(product);
