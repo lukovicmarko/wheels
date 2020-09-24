@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wheels/src/models/Product.dart';
 import 'package:wheels/src/utils/constants.dart';
 import 'package:wheels/src/widgets/favorite_button.dart';
+import 'package:wheels/src/widgets/location.dart';
+import 'package:wheels/src/widgets/productPrice.dart';
+import 'package:wheels/src/widgets/product_title.dart';
 
 class ProductDetials extends StatefulWidget {
   ProductDetials({this.product});
@@ -43,14 +46,10 @@ class _ProductDetialsState extends State<ProductDetials>
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  widget.product.name,
-                  softWrap: true,
+                ProductTitle(
+                  product: widget.product,
+                  fontSize: 20.0,
                   maxLines: 2,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                  ),
                 ),
                 FavoriteButton(product: widget.product)
               ],
@@ -61,24 +60,7 @@ class _ProductDetialsState extends State<ProductDetials>
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.location_on,
-                      color: kOrangeColor,
-                      size: 22.0,
-                    ),
-                    Text(
-                      "Kragujevac",
-                      maxLines: 1,
-                      softWrap: true,
-                      style: TextStyle(
-                        fontSize: 19.0,
-                        color: kColorGreen,
-                      ),
-                    ),
-                  ],
-                ),
+                Location(),
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15.0),
                   margin: EdgeInsets.only(bottom: 10.0),
@@ -89,13 +71,10 @@ class _ProductDetialsState extends State<ProductDetials>
                       bottomLeft: Radius.circular(20.0),
                     ),
                   ),
-                  child: Text(
-                    "${widget.product.price.toString()} €",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                      color: kYellowColor,
-                    ),
+                  child: ProductPrice(
+                    product: widget.product,
+                    color: kYellowColor,
+                    fontSize: 20.0,
                   ),
                 ),
               ],

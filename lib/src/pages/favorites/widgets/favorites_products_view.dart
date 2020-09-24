@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wheels/src/data/productsData.dart';
+import 'package:wheels/src/pages/favorites/widgets/favorite_product.dart';
 
 class FavoritesProductsView extends StatelessWidget {
   @override
@@ -10,9 +11,7 @@ class FavoritesProductsView extends StatelessWidget {
         shrinkWrap: true,
         itemCount: products.favoritesProducts.length,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            child: Text(products.favoritesProducts[index].name),
-          );
+          return FavoriteProduct(product: products.favoritesProducts[index]);
         },
       );
     });

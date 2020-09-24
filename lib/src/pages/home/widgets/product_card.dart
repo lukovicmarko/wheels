@@ -3,6 +3,9 @@ import 'package:wheels/src/models/Product.dart';
 import 'package:wheels/src/screens/details/details_screen.dart';
 import 'package:wheels/src/utils/constants.dart';
 import 'package:wheels/src/widgets/favorite_button.dart';
+import 'package:wheels/src/widgets/location.dart';
+import 'package:wheels/src/widgets/productPrice.dart';
+import 'package:wheels/src/widgets/product_title.dart';
 
 class ProductCard extends StatelessWidget {
   ProductCard({this.product});
@@ -57,34 +60,13 @@ class ProductCard extends StatelessWidget {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: 4.0),
-                          child: Text(
-                            product.name,
+                          child: ProductTitle(
+                            product: product,
+                            fontSize: 18.0,
                             maxLines: 1,
-                            softWrap: true,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
-                            ),
                           ),
                         ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              color: kOrangeColor,
-                              size: 20.0,
-                            ),
-                            Text(
-                              "Kragujevac",
-                              maxLines: 1,
-                              softWrap: true,
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: kColorGreen,
-                              ),
-                            ),
-                          ],
-                        )
+                        Location()
                       ],
                     ),
                   ),
@@ -110,13 +92,10 @@ class ProductCard extends StatelessWidget {
                 topRight: Radius.circular(15.0),
               ),
             ),
-            child: Text(
-              "${product.price.toString()} €",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 19.0,
-                color: kWhiteColor,
-              ),
+            child: ProductPrice(
+              product: product,
+              color: kWhiteColor,
+              fontSize: 19.0,
             ),
           ),
         ),
