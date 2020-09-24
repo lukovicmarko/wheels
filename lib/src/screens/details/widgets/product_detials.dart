@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wheels/src/models/Product.dart';
 import 'package:wheels/src/utils/constants.dart';
+import 'package:wheels/src/widgets/favorite_button.dart';
 
 class ProductDetials extends StatefulWidget {
   ProductDetials({this.product});
@@ -51,37 +52,53 @@ class _ProductDetialsState extends State<ProductDetials>
                     fontSize: 20.0,
                   ),
                 ),
-                SvgPicture.asset(
-                  "assets/icons/like.svg",
-                  width: 20.0,
-                  color: kRedColor,
-                ),
+                FavoriteButton(product: widget.product)
               ],
             ),
             SizedBox(
               height: 10.0,
             ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15.0),
-                margin: EdgeInsets.only(bottom: 10.0),
-                decoration: BoxDecoration(
-                  color: kPrimaryColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.location_on,
+                      color: kOrangeColor,
+                      size: 22.0,
+                    ),
+                    Text(
+                      "Kragujevac",
+                      maxLines: 1,
+                      softWrap: true,
+                      style: TextStyle(
+                        fontSize: 19.0,
+                        color: kColorGreen,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15.0),
+                  margin: EdgeInsets.only(bottom: 10.0),
+                  decoration: BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      bottomLeft: Radius.circular(20.0),
+                    ),
+                  ),
+                  child: Text(
+                    "${widget.product.price.toString()} €",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: kYellowColor,
+                    ),
                   ),
                 ),
-                child: Text(
-                  "${widget.product.price.toString()} €",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    color: kYellowColor,
-                  ),
-                ),
-              ),
+              ],
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

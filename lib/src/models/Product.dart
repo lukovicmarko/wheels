@@ -5,6 +5,7 @@ class Product {
   final List images;
   final String dimensions;
   final String description;
+  bool isFavorite;
 
   Product({
     this.id,
@@ -13,5 +14,6 @@ class Product {
     this.images,
     this.dimensions,
     this.description,
+    this.isFavorite,
   });
 }

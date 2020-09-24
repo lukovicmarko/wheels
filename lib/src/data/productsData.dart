@@ -25,6 +25,7 @@ class ProductsData extends ChangeNotifier {
           price: product['price'].toDouble(),
           images: product['image'],
           description: product['productDescription'],
+          isFavorite: product['isFavorite'],
         ),
       );
     });
@@ -33,4 +34,29 @@ class ProductsData extends ChangeNotifier {
   }
 
   UnmodifiableListView<Product> get products => UnmodifiableListView(_products);
+
+  List<Product> _favoritesProducts = [];
+
+  UnmodifiableListView<Product> get favoritesProducts =>
+      UnmodifiableListView(_favoritesProducts);
+
+  _addToFavotites(product) {
+    _favoritesProducts.add(product);
+  }
+
+  _removeFromFavorites(product) {
+    _favoritesProducts.remove(product);
+  }
+
+  void toggleFavorite(Product product) {
+    product.isFavorite = !product.isFavorite;
+
+    if (product.isFavorite) {
+      _addToFavotites(product);
+    } else {
+      _removeFromFavorites(product);
+    }
+
+    notifyListeners();
+  }
 }

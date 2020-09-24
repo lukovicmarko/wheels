@@ -21,7 +21,7 @@ class FullscreenCarousel extends StatelessWidget {
           IconButton(
             icon: SvgPicture.asset(
               "assets/icons/close.svg",
-              width: 22.0,
+              width: 20.0,
               color: kWhiteColor,
             ),
             onPressed: () {
