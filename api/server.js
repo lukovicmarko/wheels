@@ -1,5 +1,7 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
+const fileUpload = require('express-fileupload');
 const connectDb = require('./config/db');
 const errorHandler = require('./middlewares/error');
 
@@ -14,6 +16,11 @@ const products = require('./routes/products');
 const app = express();
 
 app.use(express.json());
+
+app.use(fileUpload());
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/products', products);
 
 app.use(errorHandler);
