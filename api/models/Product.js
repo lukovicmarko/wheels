@@ -13,10 +13,14 @@ const ProductSchema = new mongoose.Schema({
     productDescription: {
         type: String
     },
+    image: {
+        type: [String]
+    },
     isFavorite: {
         type: Boolean
     }
 
 });
+
 
 module.exports = mongoose.model('Product', ProductSchema);
